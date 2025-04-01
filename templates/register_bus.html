@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Bus</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0d0332 0%, #570303 100%);  
+            font-family: Arial, sans-serif;
+            /* height: 100vh; */
+        }
+
+        h1 {
+            margin-top: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 5vh;
+        }
+
+        form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 3px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button.available-buses {
+            background-color: #310551d1;
+            color: #fff;
+        }
+
+        .button-container button.logout-button {
+            background-color: #570303;
+            color: #fff;
+        }
+
+        .button-container button:hover {
+            background-color: #9b1c05;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="time"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #310551d1;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .notification{
+    color: #bb3621;
+    padding: 2px;
+}
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Register Bus</h1>
+    <form action="#" method="POST">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                
+                {% for message in messages %}
+                        <div class="notification">{{ message }}</div>
+                {% endfor %}
+                
+            {% endif %}
+        {% endwith %}
+        <label for="bus_name">Bus Name:</label><br>
+        <input type="text" id="bus_name" name="bus_name" required><br>
+
+        <label for="total_seats">Total Seats:</label><br>
+        <input type="number" id="total_seats" name="total_seats" required><br>
+
+        <label for="starting_point">Starting Point:</label><br>
+        <input type="text" id="starting_point" name="starting_point" required><br>
+
+        <label for="end_point">Ending Point:</label><br>
+        <input type="text" id="end_point" name="end_point" required><br>
+
+        <label for="departure_time">Departure Time:</label><br>
+        <input type="time" id="departure_time" name="departure_time" required><br>
+
+        <label for="arrival_time">Arrival Time:</label><br>
+        <input type="time" id="arrival_time" name="arrival_time" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<div class="button-container">
+    <form action="{{url_for('view_buses')}}" method="get">
+        <button class="logout-button" type="submit">Available Buses</button>
+    </form>
+    <form action="{{url_for('logout')}}" method="get">
+        <button class="logout-button" type="submit">Logout</button>
+    </form>
+</div>
+    
+</body>
+</html>

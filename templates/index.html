@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RouteEase - Welcome</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(to bottom, #0d0332 0%, #570303 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo {
+      animation: zoom 3s ease-in-out;
+      max-width: 60%;
+      max-height: 60%;
+    }
+
+    .text {
+      display: none;
+      color: #ffffff;
+      font-size: 80px;
+      animation: fade-in 1s 3s forwards;
+    }
+
+    @keyframes zoom {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fade-in {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <img class="logo" src="{{url_for('static',filename='logo.png')}}" alt="RouteEase Logo">
+  <div class="text">RouteEase</div>
+  <script>
+    setTimeout(function() {
+      document.querySelector('.text').style.display = 'block';
+    }, 3000); // Display text after 3 seconds (adjust the time as needed)
+
+    setTimeout(function() {
+      window.location.href = '/login';
+    }, 5000); // Redirect after 6 seconds (adjust the time as needed)
+  </script>
+</body>
+
+</html>

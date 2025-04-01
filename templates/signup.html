@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Signup Page</title>
+	<style>
+    body {
+    background: linear-gradient(to bottom, #0d0332 0%, #570303 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh;
+    margin: 0rem;
+    overflow: hidden; 
+    position: relative;
+  }
+  
+  /* Center the login form on the page */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 400px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 2rem;
+    z-index: 10;
+  }
+  
+  
+  #blob {
+    background-color: black;
+    height: 350px;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, #d3cdd7, #474247);
+    animation: rotate 15s infinite;
+    filter:blur(150px);
+    opacity: 1;
+    z-index: -1;
+  }
+  
+  /* Style the heading */
+  h1 {
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      text-align: center;
+      font-size: 3rem;
+      margin-top: 20;
+      color: #e0aa06;
+      z-index: 1;
+  }
+  
+  label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      z-index: 1;
+      color: #d3cdd7;
+  }
+  
+  input[type="text"], input[type="password"], input[type="tel"] {
+      padding: 5px;
+      margin-bottom: 20px;
+      border: 2px solid #555;
+      border-radius: 3px;
+      background-color: #f2f2f2;
+      width: 100%;
+      z-index: 1;
+  }
+  
+  input[type="submit"] {
+      background-color: #FFC107;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 10px;
+      cursor: pointer;
+      float: right;
+      z-index: 1;
+  }
+  
+  input[type="submit"]:hover {
+      background-color: #555;
+      z-index: 1;
+  }
+  
+  .clearfix {
+      clear: both;
+  }
+  
+  .error-message {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+      z-index: 1;
+  }
+  
+  form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+    }
+    
+    .center {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      z-index: 1;
+    }
+    
+    .notification {
+      position: fixed;
+      top: 1%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      text-align: center;
+      background-color: #34352d;
+      color: #f2f2f2;
+      padding: 20px;
+      border-radius: 5px;
+      display: none;
+      z-index: 1;
+    }
+    .msg{
+    color:#d3cdd7;
+    padding: 2px;
+  }
+    .notification.show {
+      display: block;
+      animation: fadeOut 3s;
+      z-index: 1;
+    }
+    
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+	<h1>Signup Page</h1>
+	<form id="signup-form" action="#" method="post">
+      
+        <label for="name">Name</label>
+        <input type="text" id="ame" name="name" required>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required minlength="6">
+      
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="student">Student</option>
+            <option value="admin">Admin</option>
+        </select>
+
+        {% if message %}
+        <div class="msg">{{message}}</div>
+        {% endif %}
+
+        <div class="center">
+          <input type="submit" id="signup-button" value="Sign Up">
+        </div>
+      </form>
+      
+      <div class="notification" id="signup-notification"></div>
+
+
+      <div id="blob"></div>
+      <div id="blur"></div>
+            
+      <script>
+      const blob = document.getElementById("blob");
+      
+      window.onpointermove = event => { 
+        const { clientX, clientY } = event;
+        
+        blob.animate({
+          left: `${clientX}px`,
+          top: `${clientY}px`
+        }, { duration: 0, fill: "forwards" });
+      }
+      </script>
+      
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  
+  <style>
+    
+body, form {
+
+    margin: 0;
+    padding: 0;
+    
+  }
+  
+  
+  body {
+    background: linear-gradient(to bottom, #0d0332 0%, #570303 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* background-color:whitesmoke; */
+    flex-direction: column; 
+  
+  }
+  
+  /* Style  form container */
+  form {
+    width: 450px;
+    padding: 40px;
+    background-color: #6e0aac5a;
+    /* background-color:#3a6576; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; 
+    position: absolute;
+  top: 0;
+  right: 0;
+    
+    height: 60vh;
+    margin: 70px 50px 50px 0;
+    z-index: 10;
+   
+  }
+  
+  
+  header {
+    text-align: left;
+    
+  }
+  
+  /* Style form title */
+  h1 {
+    font-size: 24px;
+    color:azure;
+   
+    text-align: left;
+  }
+  
+  /* Style  form fields and labels */
+  label, select, input[type="text"], input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Style  label */
+  label {
+    font-weight: bold;
+    color:rgba(201, 169, 12, 0.824);
+    font-size: 400vh;
+  }
+  
+  /* Style  select field */
+  select {
+    height: 40px;
+    border: 1px solid azure;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+  
+  /* Style  input fields */
+  input[type="text"] {
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 10px;
+  }
+  
+  /* Style  submit button */
+  input[type="submit"] {
+    height: 40px;
+    background-color:whitesmoke;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  /*  submit button color on hover */
+  input[type="submit"]:hover {
+    background-color:burlywood;
+  }
+  
+  
+  
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    p{
+        color: aliceblue;
+    }
+    p a {
+    text-decoration: none;
+    color: #e0aa06;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    }
+
+    p a:hover {
+        text-decoration: underline;
+    }
+
+    .signup-button{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    input[type="password"] {
+      width: 80%;
+      padding: 10px;
+      font-size: 15px;
+      margin-bottom: 10px;
+      height: 15px;
+    }
+    input[type="password"] {
+      margin-bottom: 60px; 
+    }
+    input[type="submit"] {
+      margin-top: 10px;
+    }
+    .msg{
+    color:antiquewhite;
+    padding: 2px;
+  }
+  </style>
+</head>
+<body>
+ 
+  <header style="display:flex; align-items:center;">
+    <!--  unique logo and  header content -->
+    <h1 style="margin-right:500px;margin-top: -60%;"><pre style="color:azure ;"><header>
+      <h1 style="font-size: 80px; font-family: 'Times New Roman', Times, serif;color: azure;">
+   
+    RouteEase:</h1>
+       Streamlining Bus Route 
+       Bookings for College Students</pre></h1>
+  </header>
+  
+  <form action="#" method="post" id="loginForm">
+    <label for="role">Student/Admin</label>
+    <select id="role" name="role">
+      <option value="student">Student</option>
+      <option value="admin">Admin</option>
+    </select>
+    <br>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" placeholder="Enter your username" required style="width: 95%;font-size: 15px;">
+    <br>
+    <label for="password" style="font-size: 18px;">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your password" minlength="6" required style="width: 95%; padding: 10px; font-size: 15px;">
+    <br>
+      {% if message %}
+        <div class="msg">{{message}}</div>
+      {% endif %}
+    <input type="submit" value="Login">
+    <div class='signup-button' style="text-align: center; margin-top: 20px;">
+      <p>Not signed up? <a href="{{url_for('signup')}}">Sign up</a></p>
+  </div>
+  </form>
+
+
+  
+</body>
+</html>
